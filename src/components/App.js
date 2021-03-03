@@ -1,18 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import dataApi from '../services/dataApi';
 import CharactersList from './CharactersList';
+import logo from '../images/Rick_and_Morty_-_logo.png';
 
 console.log(dataApi());
 const App = () => {
   const [characters, setCharacters] = useState([]);
   useEffect(() => {
-    //console.log(dataApi());
     dataApi().then((data) => setCharacters(data));
   }, []);
   return (
     <>
-      <CharactersList />
-      <h1>Hola Mundo</h1>
+      <header className="header">
+        <img src={logo} alt="logo Rick and Morty" className="header__image" />
+      </header>
+      <main>
+        <CharactersList characters={characters} />
+      </main>
+      <footer>
+        <small className="footer">Rick and Morty</small>
+      </footer>
     </>
   );
 };

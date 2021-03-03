@@ -3,4 +3,48 @@
   margin: 0;
   padding: 0;
   list-style-type: none;
+  background-color: black;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &__image {
+    width: 350px;
+  }
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  &__item {
+    margin: 10px;
+    &--image {
+      width: 180px;
+    }
+    &--container {
+      background-color: rgb(6, 201, 250);
+      width: 180px;
+    }
+    &--name {
+      background-color: rgb(6, 201, 250);
+      color: white;
+      font-size: 19px;
+      padding: 5px;
+    }
+    &--species {
+      background-color: rgb(6, 201, 250);
+      color: white;
+      font-size: 16px;
+      padding: 5px;
+    }
+  }
+}
+
+.footer {
+  color: white;
+  padding: 10px;
 }
