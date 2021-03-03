@@ -1,4 +1,4 @@
-# Evaluacion intermedia
+# Evaluacion final
 
-La web consiste en un listado de pokemon, con una tarjeta para cada uno con información relevante, como el
-nombre, tipos y una imagen.
+El ejercicio consiste en desarrollar una página web con un listado de personajes de Rick and Morty, que
+podemos filtrar por el nombre del personaje.

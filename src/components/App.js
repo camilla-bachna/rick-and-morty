@@ -1,20 +1,19 @@
-import React from 'react';
-import pokemon from '../data/pokemon.json';
-import PokeList from './PokeList';
+import React, { useEffect, useState } from 'react';
+import dataApi from '../services/dataApi';
+import CharactersList from './CharactersList';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      pokemon: pokemon,
-    };
-  }
-  render() {
-    return (
-      <>
-        <PokeList pokemon={pokemon} />
-      </>
-    );
-  }
-}
+console.log(dataApi());
+const App = () => {
+  const [characters, setCharacters] = useState([]);
+  useEffect(() => {
+    //console.log(dataApi());
+    dataApi().then((data) => setCharacters(data));
+  }, []);
+  return (
+    <>
+      <CharactersList />
+      <h1>Hola Mundo</h1>
+    </>
+  );
+};
 export default App;
