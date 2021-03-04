@@ -5,6 +5,7 @@ import CharacterDetail from './CharacterDetail';
 import CharactersList from './CharactersList';
 import logo from '../images/Rick_and_Morty_-_logo.png';
 import Filter from './Filter';
+import CharacterNotFound from './CharacterNotFound';
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -38,31 +39,35 @@ function App() {
     );
     if (characterFound) {
       return (
-        <CharacterDetail>
-          <div className="characterDetail">
-            <img
-              src={characterFound.foto}
-              alt={`Foto of ${characterFound.name}`}
-              className="characterDetail__image"
-            />
-            <div className="characterDetail__container">
-              <h2 className="characterDetail__name">{characterFound.name}</h2>
-              <h3 className="characterDetail__species">
-                Status: {characterFound.status}
-              </h3>
-              <h3 className="characterDetail__species">
-                Species: {characterFound.species}
-              </h3>
-              <h3 className="characterDetail__species">
-                Origin: {characterFound.origin}
-              </h3>
-              <h3 className="characterDetail__species">
-                Episodes: {characterFound.episode.length}
-              </h3>
+        <div className="box">
+          <CharacterDetail>
+            <div className="characterDetail">
+              <img
+                src={characterFound.foto}
+                alt={`Foto of ${characterFound.name}`}
+                className="characterDetail__image"
+              />
+              <div className="characterDetail__container">
+                <h2 className="characterDetail__name">{characterFound.name}</h2>
+                <h3 className="characterDetail__species">
+                  Status: {characterFound.status}
+                </h3>
+                <h3 className="characterDetail__species">
+                  Species: {characterFound.species}
+                </h3>
+                <h3 className="characterDetail__species">
+                  Origin: {characterFound.origin}
+                </h3>
+                <h3 className="characterDetail__species">
+                  Episodes: {characterFound.episode.length}
+                </h3>
+              </div>
             </div>
-          </div>
-        </CharacterDetail>
+          </CharacterDetail>
+        </div>
       );
+    } else {
+      return <CharacterNotFound />;
     }
   };
   return (
