@@ -1,7 +1,7 @@
 const Filter = (props) => {
   const handleCharacterName = (event) => {
     props.handleFilter(event.target.name, event.target.value);
-    console.log(event.target.name, event.target.value);
+    /* console.log(event.target.name, event.target.value); */
   };
 
   return (

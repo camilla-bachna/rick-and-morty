@@ -24,6 +24,12 @@ function App() {
     return character.name.toLowerCase().includes(name.toLowerCase());
   });
 
+  function optionalMessage() {
+    if (filterCharacters.length === 0) {
+      return <p>There is no character matching the word {name}</p>;
+    }
+  }
+
   const renderDetail = (routerProps) => {
     const routerCharacterId = parseInt(routerProps.match.params.id);
 
@@ -53,7 +59,6 @@ function App() {
               <h3 className="characterDetail__species">
                 Episodes: {characterFound.episode.length}
               </h3>
-              {/* change */}
             </div>
           </div>
         </CharacterDetail>
@@ -70,6 +75,7 @@ function App() {
           <Route exact path="/">
             <Filter handleFilter={handleFilter} name={name} />
             <CharactersList characters={filterCharacters} />
+            <div className="optionalMessage">{optionalMessage()}</div>
           </Route>
           {/*  has to be within this Route, otherwise  - if outside of Switch - would always paint it. Switch = if else. path="" always start with / */}
           <Route path="/character/:id" render={renderDetail}></Route>

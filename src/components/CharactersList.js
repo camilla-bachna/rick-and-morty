@@ -10,9 +10,32 @@ const CharactersList = (props) => {
       </li>
     );
   });
+
+  /* const character =
+  props.characters.length > 0 ? (
+    props.characters.map((character) => {
+      return (
+        <li key={character.id} className="list__item">
+          <CharactersCard character={character} />
+        </li>
+      )}) : (
+    <div>
+      No results found 
+    </div>
+  )
+ */
+  /*   const character = props.characters.map((character) => {
+    return (
+      <li key={character.id} className="list__item">
+        <CharactersCard character={character} />
+      </li>
+    );
+  }); */
   return (
     <>
-      <ul className="list">{character}</ul>
+      {/*   {character.length > 0 ? { character } : <div>No results found.</div>} */}
+
+      <ul className="list">{character} </ul>
     </>
   );
 };
