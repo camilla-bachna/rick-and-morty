@@ -10,6 +10,9 @@ const dataApi = () => {
             name: character.name,
             species: character.species,
             foto: character.image,
+            status: character.status,
+            origin: character.origin.name,
+            episode: character.episode,
           };
         });
       })

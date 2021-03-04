@@ -1,10 +1,12 @@
+import { Route, Switch } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import dataApi from '../services/dataApi';
+import CharacterDetail from './CharacterDetail';
 import CharactersList from './CharactersList';
 import logo from '../images/Rick_and_Morty_-_logo.png';
 import Filter from './Filter';
 
-const App = () => {
+function App() {
   const [characters, setCharacters] = useState([]);
   const [name, setName] = useState('');
 
@@ -22,19 +24,61 @@ const App = () => {
     return character.name.toLowerCase().includes(name.toLowerCase());
   });
 
+  const renderDetail = (routerProps) => {
+    const routerCharacterId = parseInt(routerProps.match.params.id);
+
+    const characterFound = characters.find(
+      (character) => character.id === routerCharacterId
+    );
+    if (characterFound) {
+      return (
+        <CharacterDetail>
+          <div className="characterDetail">
+            <img
+              src={characterFound.foto}
+              alt={`Foto of ${characterFound.name}`}
+              className="characterDetail__image"
+            />
+            <div className="characterDetail__container">
+              <h2 className="characterDetail__name">{characterFound.name}</h2>
+              <h3 className="characterDetail__species">
+                Status: {characterFound.status}
+              </h3>
+              <h3 className="characterDetail__species">
+                Species: {characterFound.species}
+              </h3>
+              <h3 className="characterDetail__species">
+                Origin: {characterFound.origin}
+              </h3>
+              <h3 className="characterDetail__species">
+                Episodes: {characterFound.episode.length}
+              </h3>
+              {/* change */}
+            </div>
+          </div>
+        </CharacterDetail>
+      );
+    }
+  };
   return (
     <>
       <header className="header">
         <img src={logo} alt="logo Rick and Morty" className="header__image" />
       </header>
-      <main>
-        <Filter handleFilter={handleFilter} name={name} />
-        <CharactersList characters={filterCharacters} />
+      <main className="main">
+        <Switch>
+          <Route exact path="/">
+            <Filter handleFilter={handleFilter} name={name} />
+            <CharactersList characters={filterCharacters} />
+          </Route>
+          {/*  has to be within this Route, otherwise  - if outside of Switch - would always paint it. Switch = if else. path="" always start with / */}
+          <Route path="/character/:id" render={renderDetail}></Route>
+        </Switch>
       </main>
-      <footer>
-        <small className="footer">Rick and Morty</small>
+      <footer className="footer">
+        <small className="footer__text">Rick and Morty</small>
       </footer>
     </>
   );
-};
+}
 export default App;
