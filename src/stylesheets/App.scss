@@ -44,6 +44,20 @@
   }
 }
 
+.form {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  &__input {
+    color: white;
+    border: 2px solid rgb(6, 201, 250);
+    border-radius: 4px;
+    width: 250px;
+    height: 30px;
+    padding: 10px;
+  }
+}
+
 .footer {
   color: white;
   padding: 10px;
