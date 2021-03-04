@@ -18,6 +18,10 @@ const App = () => {
     }
   };
 
+  const filterCharacters = characters.filter((character) => {
+    return character.name.toLowerCase().includes(name.toLowerCase());
+  });
+
   return (
     <>
       <header className="header">
@@ -25,7 +29,7 @@ const App = () => {
       </header>
       <main>
         <Filter handleFilter={handleFilter} name={name} />
-        <CharactersList characters={characters} />
+        <CharactersList characters={filterCharacters} />
       </main>
       <footer>
         <small className="footer">Rick and Morty</small>
