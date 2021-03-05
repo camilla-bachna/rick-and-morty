@@ -43,24 +43,22 @@
     margin: 10px;
     &--image {
       width: 180px;
-      transition: 0.7s width ease-in;
-      &:hover {
-        width: 200px;
-      }
     }
     &--container {
       background-color: rgb(6, 201, 250);
       width: 180px;
-      transition: 0.7s width ease-in;
-      &:hover {
-        width: 200px;
-      }
+      height: 270px;
     }
     &--name {
       background-color: rgb(6, 201, 250);
       color: white;
       font-size: 19px;
       padding: 5px;
+      transition: 0.7s font-size ease-in, 0.7s color ease-in;
+      &:hover {
+        font-size: 20px;
+        color: rgb(5, 110, 136);
+      }
     }
     &--species {
       background-color: rgb(6, 201, 250);

@@ -1,7 +1,6 @@
 const Filter = (props) => {
   const handleCharacterName = (event) => {
     props.handleFilter(event.target.name, event.target.value);
-    /* console.log(event.target.name, event.target.value); */
   };
 
   return (
@@ -12,7 +11,8 @@ const Filter = (props) => {
           name="name"
           id="name"
           placeholder="write a name here..."
-          onKeyUp={handleCharacterName}
+          value={props.name}
+          onChange={handleCharacterName}
           className="form__input"
         />
       </label>
