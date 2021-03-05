@@ -40,7 +40,7 @@ function App() {
     if (characterFound) {
       return (
         <div className="box">
-          <CharacterDetail>
+          <CharacterDetail name={name}>
             <div className="characterDetail">
               <img
                 src={characterFound.foto}

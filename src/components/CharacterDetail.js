@@ -6,7 +6,7 @@ const CharacterDetail = (props) => {
   return (
     <>
       <Link to="/" className="link">
-        Return to main site
+        <h4>Return to main site</h4>
       </Link>
       {props.children}
     </>
