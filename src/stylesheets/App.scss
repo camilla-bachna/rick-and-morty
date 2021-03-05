@@ -36,25 +36,57 @@
 
 .list {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: 300px;
   align-content: center;
   grid-template-areas:
     '. a .'
     '. a .';
-
+  @media all and (min-width: 768px) {
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 300px;
+    align-content: center;
+    grid-template-areas:
+      'a'
+      'a';
+  }
+  @media all and (min-width: 1200px) {
+    grid-template-columns: repeat(7, 1fr);
+    grid-auto-rows: 300px;
+    align-content: center;
+    grid-template-areas:
+      'a'
+      'a';
+  }
   &__item {
     grid-area: a a;
     align-self: center;
     justify-self: center;
     margin: 10px;
+    @media all and (min-width: 768px) {
+      grid-column: a a;
+    }
     &--image {
-      width: 180px;
+      width: 140px;
+      @media all and (min-width: 768px) {
+        width: 160px;
+      }
+      @media all and (min-width: 1200px) {
+        width: 180px;
+      }
     }
     &--container {
       background-color: rgb(6, 201, 250);
-      width: 180px;
-      height: 270px;
+      width: 140px;
+      height: 230px;
+      @media all and (min-width: 768px) {
+        width: 160px;
+        height: 250px;
+      }
+      @media all and (min-width: 1200px) {
+        width: 180px;
+        height: 270px;
+      }
     }
     &--name {
       background-color: rgb(6, 201, 250);
