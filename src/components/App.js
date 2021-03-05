@@ -43,6 +43,9 @@ function App() {
     const characterFound = characters.find(
       (character) => character.id === routerCharacterId
     );
+
+    /* add icon if status of character is dead */
+
     function alien() {
       if (characterFound.status === 'Dead') {
         return <i className="fab fa-optin-monster characterDetail__alien"></i>;
@@ -90,8 +93,8 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Filter handleFilter={handleFilter} name={name} />
-            <CharactersList characters={filterCharacters} />
             <div className="optionalMessage">{optionalMessage()}</div>
+            <CharactersList characters={filterCharacters} />
           </Route>
           {/*  has to be within this Route, otherwise  - if outside of Switch - would always paint it. Switch = if else. path="" always start with / */}
           <Route path="/character/:id" render={renderDetail}></Route>
