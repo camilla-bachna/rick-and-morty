@@ -3,8 +3,12 @@ const Filter = (props) => {
     props.handleFilter(event.target.name, event.target.value);
   };
 
+  const handleForm = (event) => {
+    event.preventDefault();
+  };
+
   return (
-    <form className="form">
+    <form className="form" onSubmit={handleForm}>
       <label htmlFor="name">
         <input
           type="text"
