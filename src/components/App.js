@@ -31,12 +31,6 @@ function App() {
     }
   }
 
-  /*   function alien() {
-    if (filterCharacters. === 0) {
-      return <i class="fab fa-optin-monster"></i>;
-    }
-  } */
-
   const renderDetail = (routerProps) => {
     const routerCharacterId = parseInt(routerProps.match.params.id);
 
