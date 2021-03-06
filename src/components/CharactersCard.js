@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const CharactersCard = (props) => {
   return (
@@ -16,6 +17,18 @@ const CharactersCard = (props) => {
       </div>
     </Link>
   );
+};
+
+CharactersCard.propTypes = {
+  character: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    species: PropTypes.string.isRequired,
+    foto: PropTypes.string.isRequired,
+    status: PropTypes.string.isRequired,
+    origin: PropTypes.string.isRequired,
+    episode: PropTypes.array.isRequired,
+  }),
 };
 
 export default CharactersCard;
