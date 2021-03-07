@@ -1,38 +1,59 @@
 import { Route, Switch } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-import dataApi from '../services/dataApi';
-import CharacterDetail from './CharacterDetail';
-import CharactersList from './CharactersList';
-import logo from '../images/Rick_and_Morty_-_logo.png';
+import dataApi from '../services/DataApi';
 import Filter from './Filter';
+import CharactersList from './CharactersList';
+import CharacterDetail from './CharacterDetail';
 import CharacterNotFound from './CharacterNotFound';
+import logo from '../images/Rick_and_Morty_-_logo.png';
 
 function App() {
   const [characters, setCharacters] = useState([]);
   const [name, setName] = useState('');
+  const [species, setSpecies] = useState('');
+
+  /* get data from Api */
 
   useEffect(() => {
     dataApi().then((data) => setCharacters(data));
   }, []);
 
+  /*  filter by name and by species*/
+
   const handleFilter = (inputKey, inputValue) => {
     if (inputKey === 'name') {
       setName(inputValue);
+    } else if (inputKey === 'species') {
+      setSpecies(inputValue);
     }
   };
 
-  const filterCharacters = characters.filter((character) => {
-    return character.name.toLowerCase().includes(name.toLowerCase());
-  });
+  const filterCharacters = characters
+    .filter((character) => {
+      return character.name.toLowerCase().includes(name.toLowerCase());
+    })
+    .filter((character) => {
+      return character.species.toLowerCase().includes(species.toLowerCase());
+    });
+
+  /* optional message if there is no character with this name or species */
 
   function optionalMessage() {
     if (filterCharacters.length === 0) {
-      return <p>There is no character matching the word {name}</p>;
+      return (
+        <p>
+          There is no character matching the word {name} {species}.
+        </p>
+      );
     }
   }
 
+  /* route */
+
   const renderDetail = (routerProps) => {
     const routerCharacterId = parseInt(routerProps.match.params.id);
+
+    /* paint details of character or message if no character is found */
 
     const characterFound = characters.find(
       (character) => character.id === routerCharacterId
@@ -48,7 +69,7 @@ function App() {
     if (characterFound) {
       return (
         <div className="box">
-          <CharacterDetail name={name}>
+          <CharacterDetail>
             <div className="characterDetail">
               <img
                 src={characterFound.foto}
@@ -86,11 +107,11 @@ function App() {
       <main className="main">
         <Switch>
           <Route exact path="/">
-            <Filter handleFilter={handleFilter} name={name} />
+            {/* filter, optional message and characterlist within this route */}
+            <Filter handleFilter={handleFilter} name={name} species={species} />
             <div className="optionalMessage">{optionalMessage()}</div>
             <CharactersList characters={filterCharacters} />
           </Route>
-          {/*  has to be within this Route, otherwise  - if outside of Switch - would always paint it. Switch = if else. path="" always start with / */}
           <Route path="/character/:id" render={renderDetail}></Route>
         </Switch>
       </main>

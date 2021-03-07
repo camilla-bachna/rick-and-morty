@@ -112,8 +112,15 @@
   display: flex;
   justify-content: center;
   margin: 20px;
+  &__label {
+    color: white;
+    display: block;
+  }
   &__input {
     color: white;
+    display: block;
+    margin-top: 10px;
+    margin-right: 10px;
     border: 2px solid rgb(6, 201, 250);
     border-radius: 4px;
     width: 250px;
@@ -127,9 +134,11 @@
   display: block;
   padding: 10px;
   margin-top: 20px;
-  transition: 0.7s font-size ease-in;
+  text-align: center;
+  transition: 0.7s font-size ease-in, 0.7s color ease-in;
   &:hover {
     font-size: 18px;
+    color: rgb(6, 201, 250);
   }
 }
 

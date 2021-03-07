@@ -4,7 +4,11 @@ import PropTypes from 'prop-types';
 
 const CharactersCard = (props) => {
   return (
+    /* link to character detail page */
+
     <Link to={`/character/${props.character.id}`}>
+      {/* paint list with all characters */}
+
       <div className="list__item--container">
         <img
           src={props.character.foto}
@@ -18,6 +22,8 @@ const CharactersCard = (props) => {
     </Link>
   );
 };
+
+/* propTypes */
 
 CharactersCard.propTypes = {
   character: PropTypes.shape({
