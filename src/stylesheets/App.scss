@@ -3,7 +3,7 @@
   margin: 0;
   padding: 0;
   list-style-type: none;
-  background-color: black;
+  background-color: rgb(202, 210, 197);
   list-style: none;
   text-decoration: none;
 }
@@ -13,7 +13,8 @@
   align-items: center;
   justify-content: center;
   &__image {
-    width: 350px;
+    width: 420px;
+    margin-top: 15px;
   }
 }
 
@@ -22,115 +23,172 @@
   margin-bottom: 50px;
 }
 
-.footer {
-  position: fixed;
-  bottom: 0px;
-  border-top: 1px solid white;
-  width: 100%;
-  &__text {
-    color: white;
-    padding: 10px;
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 2px solid rgb(58, 90, 64);
+  @media all and (min-width: 768px) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-bottom: 50px;
+  }
+  @media all and (min-width: 1200px) {
+    display: flex;
+    flex-direction: row;
+  }
+  &__label {
+    color: rgb(47, 62, 70);
+    text-align: center;
     display: block;
+    margin: 12px;
+    font-size: 18px;
+    @media all and (min-width: 768px) {
+      text-align: left;
+    }
+  }
+  &__input {
+    color: rgb(47, 62, 70);
+    display: block;
+    margin-top: 10px;
+    margin-right: 10px;
+    width: 250px;
+    height: 40px;
+    padding: 10px;
+    border-radius: 3px;
+    text-decoration: none;
+    background-color: white;
+    cursor: pointer;
+  }
+  &__select {
+    display: block;
+    color: rgb(47, 62, 70);
+    border-radius: 3px;
+    text-decoration: none;
+    background-color: white;
+    margin-top: 10px;
+    margin-right: 10px;
+    width: 110px;
+    height: 40px;
+    padding: 10px;
+    cursor: pointer;
+  }
+  &__checkbox {
+    color: rgb(47, 62, 70);
+    display: block;
+    width: 15px;
+    height: 40px;
+    cursor: pointer;
+  }
+  &__container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 40px;
+    width: 420px;
+    margin-top: 10px;
+    @media all and (min-width: 768px) {
+      flex-direction: row;
+      height: 40px;
+    }
+    @media all and (min-width: 1200px) {
+      flex-direction: row;
+      height: 40px;
+      width: 650px;
+    }
+  }
+  &__reset {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 10px;
+    color: rgb(47, 62, 70);
+    cursor: pointer;
+    margin-top: 40px;
+    @media all and (min-width: 1200px) {
+      margin-top: 0px;
+    }
+    &--icon {
+      display: block;
+      font-size: 30px;
+      color: rgb(82, 121, 111);
+    }
+    &--text {
+      margin-top: 18px;
+    }
   }
 }
 
 .list {
   display: grid;
+  row-gap: 10px;
   grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: 300px;
-  align-content: center;
-  grid-template-areas:
-    '. a .'
-    '. a .';
   @media all and (min-width: 768px) {
     grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 300px;
-    align-content: center;
-    grid-template-areas:
-      'a'
-      'a';
   }
   @media all and (min-width: 1200px) {
     grid-template-columns: repeat(7, 1fr);
-    grid-auto-rows: 300px;
-    align-content: center;
-    grid-template-areas:
-      'a'
-      'a';
   }
   &__item {
-    grid-area: a a;
-    align-self: center;
     justify-self: center;
     margin: 10px;
-    @media all and (min-width: 768px) {
-      grid-column: a a;
+    box-shadow: 4px 4px rgb(172, 172, 172);
+    transition: 0.7s transform ease-in;
+    &:hover {
+      transform: scale(1.06);
     }
     &--image {
-      width: 140px;
+      width: 160px;
       @media all and (min-width: 768px) {
-        width: 160px;
+        width: 180px;
       }
       @media all and (min-width: 1200px) {
-        width: 180px;
+        width: 200px;
       }
     }
     &--container {
-      background-color: rgb(6, 201, 250);
-      width: 140px;
-      height: 230px;
+      background-color: rgb(163, 177, 138);
+      width: 160px;
+      height: 250px;
       @media all and (min-width: 768px) {
-        width: 160px;
-        height: 250px;
-      }
-      @media all and (min-width: 1200px) {
         width: 180px;
         height: 270px;
       }
+      @media all and (min-width: 1200px) {
+        width: 200px;
+        height: 290px;
+      }
     }
     &--name {
-      background-color: rgb(6, 201, 250);
-      color: white;
+      background-color: rgb(163, 177, 138);
+      color: rgb(47, 62, 70);
       font-size: 19px;
       padding: 5px;
       transition: 0.7s font-size ease-in, 0.7s color ease-in;
       &:hover {
         font-size: 20px;
-        color: rgb(5, 110, 136);
+        color: rgb(88, 129, 87);
       }
     }
     &--species {
-      background-color: rgb(6, 201, 250);
-      color: white;
+      background-color: rgb(163, 177, 138);
+      color: rgb(47, 62, 70);
       font-size: 16px;
       padding: 5px;
     }
   }
 }
 
-.form {
-  display: flex;
-  justify-content: center;
-  margin: 20px;
-  &__label {
-    color: white;
-    display: block;
-  }
-  &__input {
-    color: white;
-    display: block;
-    margin-top: 10px;
-    margin-right: 10px;
-    border: 2px solid rgb(6, 201, 250);
-    border-radius: 4px;
-    width: 250px;
-    height: 30px;
-    padding: 10px;
-  }
-}
-
 .link {
-  color: white;
+  color: rgb(47, 62, 70);
   display: block;
   padding: 10px;
   margin-top: 20px;
@@ -138,7 +196,7 @@
   transition: 0.7s font-size ease-in, 0.7s color ease-in;
   &:hover {
     font-size: 18px;
-    color: rgb(6, 201, 250);
+    color: rgb(58, 90, 64);
   }
 }
 
@@ -146,7 +204,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(6, 201, 250);
+  background-color: rgb(163, 177, 138);
+  box-shadow: 4px 4px rgb(172, 172, 172);
   width: 400px;
   margin-top: 20px;
   &__image {
@@ -158,19 +217,19 @@
     display: inline-block;
   }
   &__name {
-    background-color: rgb(6, 201, 250);
-    color: white;
+    background-color: rgb(163, 177, 138);
+    color: rgb(47, 62, 70);
     font-size: 19px;
     padding: 5px;
   }
   &__species {
-    background-color: rgb(6, 201, 250);
-    color: white;
+    background-color: rgb(163, 177, 138);
+    color: rgb(47, 62, 70);
     font-size: 16px;
     padding: 5px;
   }
   &__alien {
-    background-color: rgb(6, 201, 250);
+    background-color: rgb(163, 177, 138);
   }
 }
 
@@ -182,8 +241,85 @@
 }
 
 .optionalMessage {
-  color: white;
+  color: rgb(47, 62, 70);
   font-size: 21px;
   text-align: center;
   margin-top: 22px;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0px;
+  border-top: 1px solid rgb(47, 62, 70);
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  font-weight: bold;
+  &__text {
+    color: rgb(47, 62, 70);
+    background-color: white;
+    padding: 10px;
+  }
+  &__numbers {
+    color: rgb(47, 62, 70);
+    background-color: white;
+  }
+}
+
+.footer__numbers:after {
+  color: rgb(47, 62, 70);
+  padding: 10px;
+  font-size: 12px;
+  text-align: right;
+  animation-duration: 10s;
+  animation-name: numbers;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  content: 'CAMILLABACHNA';
+}
+@keyframes numbers {
+  from {
+    content: '0b11111000100';
+  }
+  7.692% {
+    content: 'Cb11111000100';
+  }
+  15.384% {
+    content: 'CA11111000100';
+  }
+  23.076% {
+    content: 'CAM1111000100';
+  }
+  30.768% {
+    content: 'CAMI111000100';
+  }
+  38.460% {
+    content: 'CAMIL11000100';
+  }
+  46.152% {
+    content: 'CAMILL1000100';
+  }
+  53.844% {
+    content: 'CAMILLA000100';
+  }
+  61.536% {
+    content: 'CAMILLAB00100';
+  }
+  69.228% {
+    content: 'CAMILLABA0100';
+  }
+  76.920% {
+    content: 'CAMILLABAC100';
+  }
+  84.612% {
+    content: 'CAMILLABACH00';
+  }
+  92.304% {
+    content: 'CAMILLABACHN0';
+  }
+  100% {
+    content: 'CAMILLABACHNA';
+  }
 }

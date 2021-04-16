@@ -1,6 +1,6 @@
 import { Route, Switch } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-import dataApi from '../services/DataApi';
+import dataApi from '../services/dataApi';
 import Filter from './Filter';
 import CharactersList from './CharactersList';
 import CharacterDetail from './CharacterDetail';
@@ -11,6 +11,8 @@ function App() {
   const [characters, setCharacters] = useState([]);
   const [name, setName] = useState('');
   const [species, setSpecies] = useState('');
+  const [status, setStatus] = useState('all');
+  const [origin, setOrigin] = useState([]);
 
   /* get data from Api */
 
@@ -25,7 +27,31 @@ function App() {
       setName(inputValue);
     } else if (inputKey === 'species') {
       setSpecies(inputValue);
+    } else if (inputKey === 'status') {
+      setStatus(inputValue);
+    } else if (inputKey === 'origin') {
+      const indexOrigin = origin.indexOf(inputValue);
+      if (indexOrigin === -1) {
+        const newOriginList = [...origin];
+        newOriginList.push(inputValue);
+        /* or also  
+        const newOriginList = [...origin, inputValue]; */
+        setOrigin(newOriginList);
+      } else {
+        const newOriginList = [...origin];
+        newOriginList.splice(indexOrigin, 1);
+        setOrigin(newOriginList);
+      }
     }
+  };
+
+  /* Reset */
+
+  const resetInputs = () => {
+    setName('');
+    setSpecies('');
+    setStatus('all');
+    setOrigin([]);
   };
 
   const filterCharacters = characters
@@ -34,6 +60,20 @@ function App() {
     })
     .filter((character) => {
       return character.species.toLowerCase().includes(species.toLowerCase());
+    })
+    .filter((character) => {
+      if (status === 'all') {
+        return true;
+      } else {
+        return character.status === status;
+      }
+    })
+    .filter((character) => {
+      if (character.origin.length === 0) {
+        return true;
+      } else {
+        return character.origin.includes(origin);
+      }
     });
 
   /* optional message if there is no character with this name or species */
@@ -42,7 +82,8 @@ function App() {
     if (filterCharacters.length === 0) {
       return (
         <p>
-          There is no character matching the word {name} {species}.
+          There is no character matching the name {name} {species} with this
+          origin and / or status.
         </p>
       );
     }
@@ -108,7 +149,13 @@ function App() {
         <Switch>
           <Route exact path="/">
             {/* filter, optional message and characterlist within this route */}
-            <Filter handleFilter={handleFilter} name={name} species={species} />
+            <Filter
+              handleFilter={handleFilter}
+              name={name}
+              species={species}
+              status={status}
+              resetInputs={resetInputs}
+            />
             <div className="optionalMessage">{optionalMessage()}</div>
             <CharactersList characters={filterCharacters} />
           </Route>
@@ -117,6 +164,7 @@ function App() {
       </main>
       <footer className="footer">
         <small className="footer__text">Rick and Morty</small>
+        <span class="footer__numbers"></span>
       </footer>
     </>
   );

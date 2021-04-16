@@ -1,6 +1,6 @@
 # Rick and Morty
 
-![Ricky and Morty](/src/images/Rick_And_Morty.png)
+![Ricky and Morty](/src/images/Rick_and_Morty.png)
 
 El ejercicio consiste en desarrollar una página web con un listado de personajes de Rick and Morty, que
 podemos filtrar por el nombre del personaje y por especie.

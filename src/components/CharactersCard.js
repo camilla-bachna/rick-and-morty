@@ -15,7 +15,6 @@ const CharactersCard = (props) => {
           alt={`Foto of ${props.character.name}`}
           className="list__item--image"
         />
-
         <h2 className="list__item--name">{props.character.name}</h2>
         <h3 className="list__item--species">{props.character.species}</h3>
       </div>
