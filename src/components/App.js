@@ -20,7 +20,7 @@ function App() {
     dataApi().then((data) => setCharacters(data));
   }, []);
 
-  /*  filter by name and by species*/
+  /*  filter by name, species, status and origin */
 
   const handleFilter = (inputKey, inputValue) => {
     if (inputKey === 'name') {
